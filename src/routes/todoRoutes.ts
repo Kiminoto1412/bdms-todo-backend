@@ -1,5 +1,6 @@
 import express from 'express';
 import { TodoController } from '../controllers/todoController';
+import { validateTodo } from '@/middlewares/validation';
 
 const router = express.Router();
 const todoController = new TodoController();
@@ -139,8 +140,8 @@ const todoController = new TodoController();
 
 router.get('/todos', todoController.getAll);
 router.get('/todos/:id', todoController.getById);
-router.post('/todos', todoController.create);
-router.put('/todos/:id', todoController.update);
+router.post('/todos',validateTodo, todoController.create);
+router.put('/todos/:id', validateTodo,todoController.update);
 router.delete('/todos/:id', todoController.delete);
 
 export default router;

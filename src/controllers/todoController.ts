@@ -9,9 +9,7 @@ export class TodoController {
     }
 
     getAll = (req: Request, res: Response): void => {
-        console.log(123)
         const todos = this.todoService.getAll();
-        console.log("todos:",todos)
         res.json(todos);
     }
 
@@ -28,7 +26,6 @@ export class TodoController {
     create = (req: Request, res: Response): void => {
         const { title } = req.body;
         const newTodo = this.todoService.create(title);
-        console.log("newTodo",newTodo)
         res.json(newTodo);
     }
 
